@@ -4,6 +4,8 @@ import dataclasses
 from snap.datablock import DataBlock
 import datetime
 
+start_time=datetime.datetime(2020, 8, 31, 0, 0, 0)
+
 class Encoder(json.JSONEncoder):
     def default(self, obj):
         if dataclasses.is_dataclass(obj):
@@ -14,9 +16,12 @@ class Encoder(json.JSONEncoder):
             return super().default(obj)
 
 def to_json(data):
+    ts=data.ts
+    to=ts[0]
+    to=start_time.timestamp()
+    to=datetime.datetime.utcfromtimestamp(to).strftime("%y/%m/%d %H:%M:%S:%f")
+    data.ts=to
     return json.dumps(data, cls=Encoder, indent=4)
-
-start_time = datetime.datetime(2020, 8, 31, 0, 0, 0)
 
 def from_json(cls):
     def _f(data):
