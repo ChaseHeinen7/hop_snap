@@ -1,4 +1,3 @@
-import hop
 import asyncio
 from functools import partial
 from concurrent.futures import ThreadPoolExecutor
