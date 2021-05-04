@@ -16,6 +16,9 @@ class Encoder(json.JSONEncoder):
             return super().default(obj)
 
 def to_json(data):
+    return json.dumps(data, cls=Encoder, indent=4)
+
+def td_json(data):
     ts=data.ts
     to=ts[0]
     to=start_time.timestamp()
@@ -34,5 +37,5 @@ def from_json(cls):
             dt = i - start_time
             dt = float(dt.total_seconds())
             new_ts.append(dt)
-        return DataBlock(id=data['id'], dec_id=data['detector_id'], loc=data['location'], ts=new_ts, zs=data['zs'])
+        return DataBlock(id=data['id'], ts=new_ts, zs=data['zs'])
     return _f
