@@ -18,11 +18,7 @@ def generate_message(time_string_format, detectors):
     detector = detectors[random.randint(0, len(detectors) - 1)]
     zs, ts = sig.siggenerate()
     return SNEWSTimedata(
-            id=str(uuid.uuid4()),
-            detector_id=detector.detector_id,
-            sent_time=datetime.datetime.utcnow().strftime(time_string_format),
-            neutrino_time=datetime.datetime.utcnow().strftime(time_string_format),
-            machine_time=datetime.datetime.utcnow().strftime(time_string_format),
+            id-random.randint(9)+1,
             location=detector.location,
             zs=zs,
             ts=ts,
