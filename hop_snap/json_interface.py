@@ -21,7 +21,7 @@ def to_json(data):
 def td_json(data):
     ts=data.ts
     to=ts[0]
-    to=start_time.timestamp()
+    to=start_time.timestamp() + to
     to=datetime.datetime.utcfromtimestamp(to).strftime("%y/%m/%d %H:%M:%S:%f")
     data.ts=to
     return json.dumps(data, cls=Encoder, indent=4)
