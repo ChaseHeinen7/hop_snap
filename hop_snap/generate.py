@@ -18,8 +18,7 @@ def generate_message(time_string_format, detectors):
     detector = detectors[random.randint(0, len(detectors) - 1)]
     zs, ts = sig.siggenerate()
     return SNEWSTimedata(
-            id=np.random.randint(9)+1,
-            location=detector.location,
+            id=random.randint(0,8)+1,
             zs=zs,
             ts=ts,
             )
